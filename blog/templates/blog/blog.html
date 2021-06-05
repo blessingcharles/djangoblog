@@ -1,0 +1,26 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+    <h1>BLOG</h1>
+    <div class="card-group" style="overflow: hidden;">
+        {% for post in posts %}
+
+        <div class="card border-primary mb-1 text-white bg-secondary mb-3 mr-1" style="min-width: 20rem;">
+            <img class="rounded-circle article-img align-self-center" src="{{post.author.profile.image.url}}" width="80rem" height="80rem">
+            <div class="card-body align-self-center border-primary mb-3">
+                <h2 class="card-title">{{post.title}}</h2>
+                <p class="card-text">{{post.content}}</p>
+                <a href="{% url 'blog:postdetail' post.id %}" class="btn btn-primary">Read Blog</a>
+                <div class="card-footer bg-transparent border-dark">
+                    <i>by {{post.author}}</i>
+                    <p class="card-text"></small>created at - {{post.date}}</small></p>
+                </div>
+             
+            </div>
+        </div>
+            
+        {% endfor %}
+    </div>
+{% endblock %}
+
+
